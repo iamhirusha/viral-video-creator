@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+
+# Build outputs and local models (not part of the skill pack)
+build_cache/
+models/
+*.onnx
+*.bin
+
+# Media generated at runtime
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.ogg
+*.flac
+
+# Research downloads (never commit other people's transcripts or thumbs)
+data/subs/
+data/*.json
+*.log
+
+# Secrets and editor junk
+secrets/
+*.pem
+.DS_Store
+.idea/
+.vscode/

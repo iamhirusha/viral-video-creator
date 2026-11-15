@@ -1,0 +1,52 @@
+{
+  "output": "ep1_test.mp4",
+  "duration": 29.5,
+  "fps": 30,
+  "voices": {
+    "me":       {"voice": "af_nicole", "speed": 0.9, "fx": ["whisper"], "gain": 1.6},
+    "mia":      {"voice": "af_sky", "pitch": 1.2, "speed": 0.92, "fx": ["whisper"], "gain": 1.5},
+    "mia_far":  {"voice": "af_sky", "pitch": 1.2, "speed": 0.9, "fx": ["far"], "gain": 1.8}
+  },
+  "shots": [
+    {"start": 0.0,  "end": 10.0, "image": "s1_couch.jpg",  "zoom": [1.0, 1.14], "focus": [0.62, 0.35], "shake": 3},
+    {"start": 10.0, "end": 17.0, "image": "s1_couch.jpg",  "zoom": [1.14, 1.2], "focus": [0.62, 0.35], "shake": 3},
+    {"start": 17.0, "end": 23.2, "image": "s2_stairs.jpg", "zoom": [1.0, 1.22], "focus": [0.5, 0.2], "shake": 5},
+    {"start": 23.2, "end": 26.6, "image": "s4_girl.jpg",   "zoom": [1.12, 1.2], "focus": [0.5, 0.35], "shake": 6, "cap_y": 1500},
+    {"start": 26.6, "end": 29.6, "choice": ["GO UPSTAIRS", "STAY WITH HER"], "sub": "COMMENT FOR PART 2"}
+  ],
+  "phone": [
+    {"start": 4.8, "end": 10.0, "type": "monitor", "image": "s3_monitor.jpg", "label": "Mia's Room", "clock": "11:58"},
+    {"start": 10.0, "end": 17.0, "type": "chat", "contact": "Mrs. Hale", "clock": "11:59", "messages": [
+      {"t": 10.6, "from": "them", "text": "is she asleep?"},
+      {"t": 11.9, "from": "me",   "text": "out cold :)"},
+      {"t": 13.3, "from": "them", "text": "good. one more rule"},
+      {"t": 14.6, "from": "them", "text": "if you hear her calling you after midnight, do NOT go upstairs"}
+    ]}
+  ],
+  "lines": [
+    {"t": 0.9,  "who": "me", "text": "Something just hit the floor upstairs."},
+    {"t": 3.3,  "who": "me", "text": "Mia's been asleep for two hours."},
+    {"t": 6.0,  "who": "me", "text": "The monitor says she hasn't moved."},
+    {"t": 15.9, "who": "me", "text": "Then the clock hit midnight."},
+    {"t": 19.1, "who": "mia_far", "label": "MIA (upstairs)", "text": "Can you come up? I had a bad dream."},
+    {"t": 23.6, "who": "mia", "label": "MIA (right next to you)", "text": "Don't. That's not me up there."}
+  ],
+  "sfx": [
+    {"t": 0.0,  "name": "thud", "gain": 1.0, "shake": 34},
+    {"t": 8.2,  "name": "lullaby", "gain": 0.6},
+    {"t": 10.6, "name": "ping"}, {"t": 11.9, "name": "ping", "gain": 0.6},
+    {"t": 13.3, "name": "ping"}, {"t": 14.6, "name": "ping"},
+    {"t": 17.1, "name": "creak", "gain": 0.8},
+    {"t": 17.9, "name": "footstep", "gain": 0.8}, {"t": 18.5, "name": "footstep", "gain": 0.8},
+    {"t": 21.3, "name": "riser", "args": {"dur": 2.0}, "gain": 0.8},
+    {"t": 23.2, "name": "sting", "gain": 1.0, "shake": 40},
+    {"t": 26.6, "name": "thud", "gain": 0.7, "shake": 0}
+  ],
+  "ambience": [
+    {"name": "rain",  "start": 0, "end": 26.6, "gain": 1.0},
+    {"name": "drone", "start": 0, "end": 26.6, "gain": 1.0},
+    {"name": "heartbeat", "start": 17.0, "end": 23.2, "gain": 0.8}
+  ],
+  "flicker": [{"t": 22.4, "dur": 0.6}],
+  "flash":   [{"t": 23.2}]
+}

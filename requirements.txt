@@ -1,0 +1,15 @@
+# Core: thumbnails, POV episode builder, channel analysis
+numpy>=1.26
+scipy>=1.11
+soundfile>=0.12
+pillow>=10.0
+faster-whisper>=1.0
+
+# Optional voices — install the ones you actually use
+edge-tts>=6.1
+# kokoro-onnx          # optional layout-pass TTS for scripts/pov/build.py
+# chatterbox-tts       # MIT-licensed; good free emotional voice
+# f5-tts               # NON-COMMERCIAL license. Do not use on a monetized channel.
+
+# Channel research (or install yt-dlp with your OS package manager)
+yt-dlp>=2024.8.0
