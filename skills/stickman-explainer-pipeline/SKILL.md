@@ -6,37 +6,36 @@ description: >-
 ---
 # Stickman explainer pipeline
 
-The quality bar is a top channel in the niche. Never send a robotic voice or a slideshow of still pictures as a finished result. Check every output yourself first, and say plainly what still falls short.
+The quality bar is a top channel in the niche (Ink Explainer-style). Never send a robotic voice, a soft/blurry frame, or a slideshow as a finished result. Check every output yourself first, attach the video, and say plainly what still falls short. Owners are often blunt: fix the exact thing they flag, fast.
+
+## 0. Save the owner's credits
+Generate images and clips in Google Flow (follow google-flow-video-production) whenever the owner has a Google AI plan signed in. Avoid built-in GenerateImage/GenerateVideo; use them only if Flow, Gemini, or Meta AI are all unavailable.
 
 ## 1. Idea and script
 - Choose the topic from viral-video-teardown data, not from a hunch.
-- Script in second person, ~200 wpm. Open on a present-day comfort, flip back in time, and say the title question out loud by ~0:40. Start a new chapter every 1-1.5 min, with a new fact every 15-20s. Each fact gets a named source and method. Keep jokes dry and in the visuals, about one a minute. End with a callback to the opening, and almost no subscribe ask.
+- Second person, ~200 wpm, dry jokes in the visuals (~1 a minute), a new fact every 15-20s with a named source and method, a chapter every 1-1.5 min, an ending that calls back to the hook, and almost no subscribe ask.
+- **Hook (most important):** drop the viewer straight into the hardship. Example: "Imagine you're stuck in the middle of nowhere. It's forty degrees. Today? Tap water, AC, a cold juice, an ice bath, or just hop in the pool. But fifty thousand years ago?" The past era must be on screen by ~8-10s, and the title question spoken by ~20s. No long present-day scenes, no modern statistics or news in the hook. A fast comfort montage (~1s per cut) is the only modern part.
 - Research the web, keep a source list, and flag uncertain claims.
-- Write one visual line under every narration line.
+- Write one visual line under every narration line, then a shot-list file (name, exact prompt with style suffix, hero yes/no, animate yes/no + motion text). The browser subagent opens it via file:// and copies prompts exactly.
 
 ## 2. Character and style
-- Give the channel one recurring hero with 3-4 unique marks (hair, a mark on the clothing, an accessory) that set him apart from competitors. Make a character sheet.
-- Style: white round head, big round expressive eyes, thin black line limbs, simple costumes, bright clean flat cartoon backgrounds with thick outlines. No painted or realistic look.
-- In every prompt, say the background characters don't share the hero's marks, or they will copy his outfit.
+- One recurring hero with 3-4 unique marks (hair, a clothing mark, an accessory) plus a character sheet.
+- Style: white round head, BIG WIDE ROUND eyes (state it every prompt, or they come out sleepy), thin black line limbs, bright flat cartoon backgrounds, thick outlines. Nothing painterly or realistic.
+- Other characters: say they do NOT have the hero's marks, and don't attach the hero sheet as a reference for shots he isn't in (use a style frame plus a separate character ref).
 
-## 3. Images and clips: Google Flow (if the user has Google AI Pro signed in on the box browser)
-- Hand Flow work to a computerUse subagent. Use one Flow project per series and upload the character sheet as an ingredient.
-- Images: Nano Banana 2.1. They don't use monthly credits (Pro gives up to ~1,000 a day). Upscale to 2K.
-- Clips: Frames mode with the image as the start frame, Veo 3.1 Lite, 720p, 8s, ~10 credits each. Animate only the key beats, and set a credit budget in the task.
-- Flow's built-in agent can plan storyboards and batch shots from a script.
-- Fall back to GenerateImage/GenerateVideo with the reference sheet if Flow isn't available.
+## 3. Images and clips
+- Via google-flow-video-production. Stills at 2K, and animate only the key beats with a hard credit cap.
+- Flow video downloads are 720p and its 1080p upscale often fails. Upscaled 720p looks soft at 1080p and owners notice. Use clips only for short (~1s) action beats; for any shot held longer than ~1.5s, use the 2K still with ffmpeg motion (push-in, heat shimmer, pulses, shakes) instead.
 
 ## 4. Voice
-- Use free voices only if the user wants free. Test several and keep the most natural (Microsoft Edge multilingual neural voices, or Chatterbox under the MIT licence), and run a Whisper check.
-- Avoid Kokoro for narration (flat), and F5-TTS/XTTS for monetized channels (non-commercial licences).
-- Paid upgrade if the user wants it: ElevenLabs.
+- Free: Microsoft Edge neural (Brian Multilingual at about +28% speed tested best), or Chatterbox (MIT). Test a few, and run a Whisper check.
+- Avoid Kokoro (flat), and F5-TTS/XTTS for monetized channels (non-commercial licences). Paid upgrade: ElevenLabs. Tell the owner the voice is still the weakest link if it is TTS.
 
-## 5. Edit (ffmpeg)
-- 1920x1080, 30fps. Hard cuts on the narration every 2-4s, gentle Ken Burns on stills, lanczos upscaling for clips.
-- Use only a few text cards (key numbers, dates). No word-by-word subtitles in long-form. Mix the narration at about -16 LUFS.
-- Review a contact sheet with one frame per second plus a Whisper pass, and iterate at least twice.
+## 5. Edit (ffmpeg, done by an executor)
+- 1920x1080, 30fps, cut from 2K sources with lanczos plus a light unsharp. Hard cuts every 1-4s, punch-ins on every beat, and few text cards (key numbers/dates), placed off faces and the sun. No word-by-word subtitles in long-form. Narration at -16 LUFS, music ducked and quiet, under ~1.5s silent tail.
+- Review a contact sheet with one frame per second, sharpness crops of each shot, and a Whisper pass. Iterate at least twice before showing the owner.
+- Workflow split: the browser subagent makes Flow assets into /workspace/<project>/flow/<episode>/, then an executor renders. Test the opening (~25-30s) with the owner before the full episode.
 
 ## 6. Thumbnail (1280x720)
-- 1-2 huge yellow words plus "?" in a heavy rounded font with a thick black outline, added with Pillow over a no-text scene.
-- One character with a strong reaction and one clear scene. Strong colour contrast, and keep the bottom-right corner clear. Check it at 246x138.
-- Make 2 options for A/B testing.
+- 1-2 huge yellow words plus "?" in a heavy rounded font with a thick black outline, over a no-text scene (Pillow).
+- One character with a strong reaction, one clear scene, strong contrast, bottom-right corner kept clear. Check at 246x138, and make 2 options for A/B testing.

@@ -7,27 +7,25 @@ description: >-
 ---
 # Google Flow video production
 
-Flow is a browser app, so hand all of the work to a computerUse subagent with the steps below. The user must be signed in to a Google AI plan in the box browser. Never enter credentials. If a sign-in appears, stop and report the URL. Never buy or upgrade.
+Flow is a browser app: hand all of the work to a computerUse subagent with the steps below (one dispatch per batch, ~6 stills + up to 4 clips fits one run; if it times out, resume it once to finish). The owner must be signed in to a Google AI plan in the box browser. Never enter credentials; on a sign-in, stop and report the URL. Never buy, upgrade, or start a trial. Prefer Flow over the bot's own image/video generation, to save the owner's credits.
 
-## Limits (Google AI Pro, check what the UI shows)
-- Credits: 1,000 a month plus 50 a day. Read the remaining credits in the UI before and after each run.
-- Images and 2K upscales don't use monthly credits but have daily caps: Nano Banana 2.1 / 2 Lite up to ~1,000 a day, Nano Banana Pro ~100 a day, 2K upscale ~200 a day. Short-term rate limits also apply.
-- Video: Veo 3.1 Lite is ~10 credits per 4/6/8s at 720p. Omni Flash is ~1 credit/s at 360p or 3/s at 720p, up to 10-15s.
-- The built-in Agent has a daily query limit that depends on the plan.
+## Limits (Google AI Pro, check the UI)
+- Credits: 1,000 a month plus 50 a day (the balance can jump up mid-run when the daily grant lands). Read the balance before and after.
+- Images and 2K upscales are free of monthly credits, with daily caps: Nano Banana 2.1 / 2 Lite ~1,000 a day, Nano Banana Pro ~100 a day, 2K upscale ~200 a day.
+- Video: Veo 3.1 Lite ~10 credits per 8s clip at 720p. Downloads are 720p, and the 1080p upscale frequently fails ("Upscaling failed!"), with 4K disabled on Pro. Plan for 720p clips.
+- The built-in Agent has a daily query limit.
 
 ## Setup per series
-1. Create one project per series (for example "<Series> <character>").
-2. Make a character sheet first (front, side, expressions, the hero's unique marks), then upload it as an ingredient/reference.
-3. Optionally set project instructions with the style suffix so every generation inherits it.
+1. One project per series. Make a hero character sheet first and upload it as an ingredient.
+2. Optionally set project instructions with the style suffix.
 
 ## Shot list to Flow
-1. Turn the script's visual lines into a shot list: name, prompt, whether the hero appears, and whether it gets animated.
-2. Add a fixed style suffix to every prompt, for example: "Clean flat 2D cartoon, thick black outlines, bright saturated colors, simple white round-head stickman with big round expressive eyes and thin black line limbs. 16:9. No text, no letters."
-3. Hero shots: attach the reference and spell out the marks again, including eye shape (otherwise the eyes come out sleepy or squinted). Say that other characters don't share the hero's marks.
-4. Generate with Nano Banana 2.1. Pick the best of the batch and regenerate once if the hero drifts or the image is muddy. Download at 2K upscale.
-5. Animate only the key beats: Frames mode, image as the start frame (optional end frame), Veo 3.1 Lite 720p 8s. Describe small motion and a static or slow camera. Set a hard credit budget in the task (for example a maximum of 40 credits).
-6. The Agent can turn a script into a storyboard and batch the shots. Use it for whole episodes, and still check each result.
-7. Save to `<project>/flow/<episode>/` with the shot names, moving files out of your Downloads folder.
+1. Write a shot-list markdown file on the box (name, exact prompt, hero yes/no, animate yes/no, motion text). Tell the subagent to open it in a tab via file:///path and copy prompts exactly.
+2. A fixed style suffix on every prompt, for example: "Clean flat 2D cartoon, thick black outlines, bright saturated colors, simple white round-head stickman with big round expressive eyes and thin black line limbs. 16:9. No text, no letters."
+3. Hero shots: attach the sheet, and restate the marks and "big wide round eyes, never sleepy or squinted." Non-hero shots: do NOT attach the hero sheet (it leaks his hair and outfit). Attach a style frame plus that character's own ref, and paste a "NOT the hero, has NO <marks>" lock.
+4. Use the Flow Agent first (owner's preference) to batch the stills with Nano Banana 2.1. If it errors ("Something went wrong"), generate directly. Reject and regenerate once for drifted marks, sleepy eyes, text/logos, a painterly or 3D look, or extra characters. Download the keepers at 2K upscale (2752x1536).
+5. Animate only short action beats: Frames mode, still as the start frame, Veo 3.1 Lite 720p 8s, locked or slow camera, one simple action, a hard credit cap (e.g. 40). Avoid zooms into faces (Veo melts them). Any shot held on screen more than ~1.5s should be a 2K still animated in the edit, not a 720p clip.
+6. Nested download menus (resolution choices) often close on browser clicks; use desktop clicks for them. Move files from ~/Downloads to /workspace/<project>/flow/<episode>/<shot>.jpg|mp4 and verify their resolutions.
 
 ## Report back
-File paths, credits used and remaining, and any shot where the hero drifted (eyes, outfit marks) or the quality was poor. Then review a contact sheet before the edit.
+File paths and resolutions, credits before and after, which shots drifted or look weak, and whether the Agent worked. Then an executor reviews a contact sheet and renders.
